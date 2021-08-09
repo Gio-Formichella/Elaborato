@@ -10,6 +10,7 @@
 #include <vector>
 
 class Time : public QTime {
+public:
     Time();
     ~Time() = default;
 
