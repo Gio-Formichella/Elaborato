@@ -15,3 +15,7 @@ Time::Time() {
 void Time::ChangeFormat(){
     timeFormatIterator++;
 }
+
+std::string Time::GetTimeFormat() const {
+    return timeFormat[1];
+}

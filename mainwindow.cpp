@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
+    timeKeeper = new Time;
     //updating current time every second
     updater = new QTimer(this);
     QObject::connect(updater,SIGNAL(timeout()),this,SLOT(UpdateTime()));
@@ -20,5 +21,5 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::UpdateTime() {
-    ui->timeLabel->setText(QTime::currentTime().toString("hh:mm.ss"));
+    ui->timeLabel->setText(QTime::currentTime().toString(QString::fromStdString(timeKeeper->GetTimeFormat())));
 }

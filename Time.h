@@ -14,6 +14,7 @@ public:
     Time();
     ~Time() = default;
 
+    std::string GetTimeFormat() const;
     void ChangeFormat();
 private:
     std::vector<std::string> timeFormat;
