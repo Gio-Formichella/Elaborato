@@ -24,6 +24,8 @@ public:
 private slots:
     void UpdateTime();
 
+    void on_ChangeTimeFormat_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *updater;

@@ -23,3 +23,9 @@ MainWindow::~MainWindow() {
 void MainWindow::UpdateTime() {
     ui->timeLabel->setText(QTime::currentTime().toString(QString::fromStdString(timeKeeper->GetTimeFormat())));
 }
+
+void MainWindow::on_ChangeTimeFormat_clicked()
+{
+    timeKeeper->ChangeFormat();
+}
+
