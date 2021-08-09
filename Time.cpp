@@ -14,6 +14,8 @@ Time::Time() {
 
 void Time::ChangeFormat(){
     timeFormatIterator++;
+    if(timeFormatIterator == timeFormat.end())
+        timeFormatIterator=timeFormat.begin();
 }
 
 std::string Time::GetTimeFormat() const {
