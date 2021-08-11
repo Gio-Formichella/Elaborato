@@ -27,7 +27,7 @@ private slots:
 
     void on_ChangeTimeFormat_clicked();
 
-    void on_dateButton_clicked();
+    void on_ChangeDateFormat_clicked();
 
 private:
     Ui::MainWindow *ui;

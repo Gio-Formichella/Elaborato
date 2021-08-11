@@ -27,7 +27,7 @@
      <string>Change Format</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="dateButton">
+   <widget class="QPushButton" name="ChangeDateFormat">
     <property name="geometry">
      <rect>
       <x>20</x>

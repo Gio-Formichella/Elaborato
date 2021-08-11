@@ -34,7 +34,7 @@ void MainWindow::on_ChangeTimeFormat_clicked()
 }
 
 
-void MainWindow::on_dateButton_clicked()
+void MainWindow::on_ChangeDateFormat_clicked()
 {
     dateKeeper->ChangeDateFormat();
     UpdateInfo();
