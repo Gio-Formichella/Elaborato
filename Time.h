@@ -15,7 +15,7 @@ public:
     ~Time() = default;
 
     std::string GetTimeFormat() const;
-    void ChangeFormat();
+    void ChangeTimeFormat();
 private:
     std::vector<std::string> timeFormat;
     std::vector<std::string>::const_iterator timeFormatIterator;

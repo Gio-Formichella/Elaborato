@@ -12,7 +12,7 @@ Time::Time() {
     timeFormatIterator=timeFormat.begin();
 }
 
-void Time::ChangeFormat(){
+void Time::ChangeTimeFormat() {
     timeFormatIterator++;
     if(timeFormatIterator == timeFormat.end())
         timeFormatIterator=timeFormat.begin();

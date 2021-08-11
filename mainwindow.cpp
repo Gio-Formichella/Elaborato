@@ -26,7 +26,7 @@ void MainWindow::UpdateTime() {
 
 void MainWindow::on_ChangeTimeFormat_clicked()
 {
-    timeKeeper->ChangeFormat();
+    timeKeeper->ChangeTimeFormat();
     UpdateTime();
 }
 
