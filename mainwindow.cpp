@@ -10,9 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     timeKeeper = new Time;
-    //updating current time every second
+    dateKeeper = new Date;
+
+    //updating time/date info every second
     updater = new QTimer(this);
-    QObject::connect(updater,SIGNAL(timeout()),this,SLOT(UpdateTime()));
+    QObject::connect(updater,SIGNAL(timeout()),this,SLOT(UpdateInfo()));
     updater->start(1000);
 }
 
@@ -20,13 +22,21 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::UpdateTime() {
+void MainWindow::UpdateInfo() {
     ui->timeLabel->setText(QTime::currentTime().toString(QString::fromStdString(timeKeeper->GetTimeFormat())));
+    ui->dateLabel->setText(QDate::currentDate().toString(QString::fromStdString(dateKeeper->GetDateFormat())));
 }
 
 void MainWindow::on_ChangeTimeFormat_clicked()
 {
     timeKeeper->ChangeTimeFormat();
-    UpdateTime();
+    UpdateInfo();
+}
+
+
+void MainWindow::on_dateButton_clicked()
+{
+    dateKeeper->ChangeDateFormat();
+    UpdateInfo();
 }
 

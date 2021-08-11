@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include "Time.h"
+#include "Date.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,13 +23,16 @@ public:
     ~MainWindow() override;
 
 private slots:
-    void UpdateTime();
+    void UpdateInfo();
 
     void on_ChangeTimeFormat_clicked();
+
+    void on_dateButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     QTimer *updater;
     Time *timeKeeper;
+    Date *dateKeeper;
 };
 #endif // MAINWINDOW_H
