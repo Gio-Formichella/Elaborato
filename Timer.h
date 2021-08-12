@@ -13,7 +13,7 @@ public:
     Timer() = default;
     ~Timer() = default;
 
-    bool SetInterval(int h, int m,int s);
+    QString RemainingTime() const;
 };
 
 

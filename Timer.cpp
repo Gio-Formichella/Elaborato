@@ -4,11 +4,13 @@
 
 #include "Timer.h"
 
-bool Timer::SetInterval(int h, int m, int s) {
-    if (QTime::isValid(h, m, s)) {
-        QTime qtimeIntervall(h, m, s);
-        setInterval(qtimeIntervall.msec());
-        return true;
-    }
-    return false;
+QString Timer::RemainingTime() const {
+    int msecRemainingTime = QTimer::remainingTime();
+    int msec = msecRemainingTime%1000;
+    int s = msecRemainingTime/1000;
+    int m = s/60;
+    int h = m/60;
+    QTime qtimeRemainingTime;
+    qtimeRemainingTime.setHMS(h,m%60,s%60,msec);
+    return qtimeRemainingTime.toString();
 }
