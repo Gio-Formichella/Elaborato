@@ -9,6 +9,7 @@
 #include <QTimer>
 #include "Time.h"
 #include "Date.h"
+#include "Timer.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,10 +30,13 @@ private slots:
 
     void on_ChangeDateFormat_clicked();
 
+    void on_setTimerButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *updater;
     Time *timeKeeper;
     Date *dateKeeper;
+    Timer *timerKeeper;
 };
 #endif // MAINWINDOW_H
