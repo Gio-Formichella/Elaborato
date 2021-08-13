@@ -7,7 +7,7 @@
 Date::Date() {
     dateFormat.emplace_back("dd.MM.yyyy");
     dateFormat.emplace_back("dd.MM.yy");
-    dateFormat.emplace_back("dddd MMMM d yy");
+    dateFormat.emplace_back("dddd MMMM d");
 
     dateFormatIterator=dateFormat.begin();
 }
