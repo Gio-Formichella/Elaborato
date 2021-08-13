@@ -32,6 +32,8 @@ private slots:
 
     void on_setTimerButton_clicked();
 
+    void on_start_stopButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *updater;

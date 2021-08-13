@@ -14,3 +14,9 @@ QString Timer::RemainingTime() const {
     qtimeRemainingTime.setHMS(h,m%60,s%60,msec);
     return qtimeRemainingTime.toString();
 }
+
+void Timer::pause() {
+    int remainingTime=this->remainingTime();
+    this->stop();
+    this->setInterval(remainingTime);
+}
