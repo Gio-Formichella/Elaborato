@@ -34,6 +34,8 @@ private slots:
 
     void on_start_stopButton_clicked();
 
+    void TimeIsUpWarning();
+
 private:
     Ui::MainWindow *ui;
     QTimer *updater;

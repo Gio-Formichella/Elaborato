@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     //updating time/date info every second
     updater = new QTimer(this);
     QObject::connect(updater,SIGNAL(timeout()),this,SLOT(UpdateInfo()));
+
+    QObject::connect(timerKeeper,SIGNAL(timeout()),this,SLOT(TimeIsUpWarning()));
     updater->start(1000);
 }
 
@@ -70,6 +72,11 @@ void MainWindow::on_start_stopButton_clicked(){
         timerKeeper->start();
     }
     else{
-        timerKeeper->pause();
+        timerKeeper->Pause();
     }
+}
+
+void MainWindow::TimeIsUpWarning() {
+    timerKeeper->stop();
+    ui->timerLabel->setText("Time's up!");
 }
