@@ -5,6 +5,10 @@
 #include "gtest/gtest.h"
 #include "../Date.h"
 
+TEST(DateTest,ConstructorTest){
+    Date d;
+    ASSERT_TRUE(d.isNull());
+}
 
 TEST(DateTest, GetDateFormatTest) {
     Date d;
