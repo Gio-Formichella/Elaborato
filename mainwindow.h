@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <memory>
 #include "Time.h"
 #include "Date.h"
 #include "Timer.h"
@@ -39,8 +40,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QTimer *updater;
-    Time *timeKeeper;
-    Date *dateKeeper;
+    std::unique_ptr<Time> timeKeeper;
+    std::unique_ptr<Date> dateKeeper;
     Timer *timerKeeper;
 };
 #endif // MAINWINDOW_H

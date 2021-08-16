@@ -6,12 +6,8 @@
 #include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-        : QMainWindow(parent), ui(new Ui::MainWindow) {
+        : QMainWindow(parent), ui(new Ui::MainWindow),timeKeeper(new Time),dateKeeper(new Date),timerKeeper(new Timer) {
     ui->setupUi(this);
-
-    timeKeeper = new Time;
-    dateKeeper = new Date;
-    timerKeeper = new Timer;
 
     //updating time/date info every second
     updater = new QTimer(this);
@@ -24,8 +20,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow() {
     delete ui;
     delete updater;
-    delete timeKeeper;
-    delete dateKeeper;
     delete timerKeeper;
 }
 
