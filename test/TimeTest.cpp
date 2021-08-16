@@ -8,4 +8,10 @@
 TEST(TimeTest,GetTimeFormatTest) {
     Time t;
     ASSERT_EQ("hh:mm:ss",t.GetTimeFormat());
+    t.ChangeTimeFormat();
+    ASSERT_EQ("hh:mm",t.GetTimeFormat());
+    t.ChangeTimeFormat();
+    ASSERT_EQ("H:m:s a",t.GetTimeFormat());
+    t.ChangeTimeFormat();
+    ASSERT_EQ("hh:mm:ss",t.GetTimeFormat());
 }
