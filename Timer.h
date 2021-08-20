@@ -13,7 +13,7 @@ public:
     Timer() = default;
     ~Timer() = default;
 
-    void Pause();
+    void pause();
 
     QString RemainingTime() const;
 };

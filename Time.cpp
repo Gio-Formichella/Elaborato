@@ -12,12 +12,12 @@ Time::Time() {
     timeFormatIterator=timeFormat.begin();
 }
 
-void Time::ChangeTimeFormat() {
+void Time::changeTimeFormat() {
     timeFormatIterator++;
     if(timeFormatIterator == timeFormat.end())
         timeFormatIterator=timeFormat.begin();
 }
 
-std::string Time::GetTimeFormat() const {
+std::string Time::getTimeFormat() const {
     return *timeFormatIterator;
 }

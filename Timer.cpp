@@ -15,7 +15,7 @@ QString Timer::RemainingTime() const {
     return qtimeRemainingTime.toString();
 }
 
-void Timer::Pause() {
+void Timer::pause() {
     int remainingTime=this->remainingTime();
     this->stop();
     this->setInterval(remainingTime);

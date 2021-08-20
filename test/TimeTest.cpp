@@ -12,11 +12,11 @@ TEST(TimeTest,ConstructorTest){
 
 TEST(TimeTest,GetTimeFormatTest) {
     Time t;
-    ASSERT_EQ("hh:mm:ss",t.GetTimeFormat());
-    t.ChangeTimeFormat();
-    ASSERT_EQ("hh:mm",t.GetTimeFormat());
-    t.ChangeTimeFormat();
-    ASSERT_EQ("H:m:s a",t.GetTimeFormat());
-    t.ChangeTimeFormat();
-    ASSERT_EQ("hh:mm:ss",t.GetTimeFormat());
+    ASSERT_EQ("hh:mm:ss", t.getTimeFormat());
+    t.changeTimeFormat();
+    ASSERT_EQ("hh:mm", t.getTimeFormat());
+    t.changeTimeFormat();
+    ASSERT_EQ("H:m:s a", t.getTimeFormat());
+    t.changeTimeFormat();
+    ASSERT_EQ("hh:mm:ss", t.getTimeFormat());
 }

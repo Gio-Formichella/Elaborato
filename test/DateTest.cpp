@@ -12,11 +12,11 @@ TEST(DateTest,ConstructorTest){
 
 TEST(DateTest, GetDateFormatTest) {
     Date d;
-    ASSERT_EQ("dd.MM.yyyy",d.GetDateFormat());
-    d.ChangeDateFormat();
-    ASSERT_EQ("dd.MM.yy",d.GetDateFormat());
-    d.ChangeDateFormat();
-    ASSERT_EQ("dddd MMMM d",d.GetDateFormat());
-    d.ChangeDateFormat();
-    ASSERT_EQ("dd.MM.yyyy",d.GetDateFormat());
+    ASSERT_EQ("dd.MM.yyyy", d.getDateFormat());
+    d.changeDateFormat();
+    ASSERT_EQ("dd.MM.yy", d.getDateFormat());
+    d.changeDateFormat();
+    ASSERT_EQ("dddd MMMM d", d.getDateFormat());
+    d.changeDateFormat();
+    ASSERT_EQ("dd.MM.yyyy", d.getDateFormat());
 }

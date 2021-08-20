@@ -27,15 +27,15 @@ public:
 private slots:
     void UpdateInfo();
 
-    void on_ChangeTimeFormat_clicked();
+    void on_changeTimeFormat_clicked();
 
-    void on_ChangeDateFormat_clicked();
+    void on_changeDateFormat_clicked();
 
     void on_setTimerButton_clicked();
 
     void on_start_stopButton_clicked();
 
-    void TimeIsUpWarning();
+    void timeIsUpWarning();
 
 private:
     Ui::MainWindow *ui;

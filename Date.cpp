@@ -12,11 +12,11 @@ Date::Date() {
     dateFormatIterator=dateFormat.begin();
 }
 
-std::string Date::GetDateFormat() const {
+std::string Date::getDateFormat() const {
     return *dateFormatIterator;
 }
 
-void Date::ChangeDateFormat() {
+void Date::changeDateFormat() {
     dateFormatIterator++;
     if(dateFormatIterator==dateFormat.end())
         dateFormatIterator=dateFormat.begin();

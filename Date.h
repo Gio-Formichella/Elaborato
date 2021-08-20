@@ -14,8 +14,8 @@ public:
     Date();
     ~Date() = default;
 
-    std::string GetDateFormat() const;
-    void ChangeDateFormat();
+    std::string getDateFormat() const;
+    void changeDateFormat();
 private:
     std::vector<std::string> dateFormat;
     std::vector<std::string>::const_iterator dateFormatIterator;

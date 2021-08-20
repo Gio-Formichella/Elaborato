@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     updater = new QTimer(this);
     QObject::connect(updater,SIGNAL(timeout()),this,SLOT(UpdateInfo()));
 
-    QObject::connect(timerKeeper,SIGNAL(timeout()),this,SLOT(TimeIsUpWarning()));
+    QObject::connect(timerKeeper,SIGNAL(timeout()),this,SLOT(timeIsUpWarning()));
     updater->start(1000);
 }
 
@@ -24,23 +24,23 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::UpdateInfo() {
-    ui->timeLabel->setText(QTime::currentTime().toString(QString::fromStdString(timeKeeper->GetTimeFormat())));
-    ui->dateLabel->setText(QDate::currentDate().toString(QString::fromStdString(dateKeeper->GetDateFormat())));
+    ui->timeLabel->setText(QTime::currentTime().toString(QString::fromStdString(timeKeeper->getTimeFormat())));
+    ui->dateLabel->setText(QDate::currentDate().toString(QString::fromStdString(dateKeeper->getDateFormat())));
     if(timerKeeper->isActive()){
         ui->timerLabel->setText(timerKeeper->RemainingTime());
     }
 }
 
-void MainWindow::on_ChangeTimeFormat_clicked()
+void MainWindow::on_changeTimeFormat_clicked()
 {
-    timeKeeper->ChangeTimeFormat();
+    timeKeeper->changeTimeFormat();
     UpdateInfo();
 }
 
 
-void MainWindow::on_ChangeDateFormat_clicked()
+void MainWindow::on_changeDateFormat_clicked()
 {
-    dateKeeper->ChangeDateFormat();
+    dateKeeper->changeDateFormat();
     UpdateInfo();
 }
 
@@ -66,11 +66,11 @@ void MainWindow::on_start_stopButton_clicked(){
         timerKeeper->start();
     }
     else{
-        timerKeeper->Pause();
+        timerKeeper->pause();
     }
 }
 
-void MainWindow::TimeIsUpWarning() {
+void MainWindow::timeIsUpWarning() {
     timerKeeper->stop();
     ui->timerLabel->setText("Time's up!");
 }

@@ -20,7 +20,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <widget class="QPushButton" name="ChangeDateFormat">
+         <widget class="QPushButton" name="changeDateFormat">
           <property name="text">
            <string>Change date format</string>
           </property>
@@ -49,7 +49,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QPushButton" name="ChangeTimeFormat">
+         <widget class="QPushButton" name="changeTimeFormat">
           <property name="text">
            <string>Change time format</string>
           </property>
@@ -117,7 +117,7 @@
       <item>
        <widget class="QPushButton" name="start_stopButton">
         <property name="text">
-         <string>Start/Pause</string>
+         <string>Start/pause</string>
         </property>
        </widget>
       </item>
