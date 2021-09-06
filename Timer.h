@@ -7,15 +7,23 @@
 
 #include <QTimer>
 #include <QTime>
+#include <QObject>
 
-class Timer : public QTimer {
+class Timer{
 public:
-    Timer() = default;
-    ~Timer() = default;
+    Timer();
+    ~Timer();
 
+    void setTimer(QTime t);
     void pause();
+    QString showRemainingTime() const;
 
-    QString RemainingTime() const;
+    void startTimer();
+    bool isTimerActive();
+    void stopTimer();
+
+private:
+    QTimer* timer;
 };
 
 

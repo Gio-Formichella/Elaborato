@@ -4,8 +4,8 @@
 
 #include "Timer.h"
 
-QString Timer::RemainingTime() const {
-    int msecRemainingTime = QTimer::remainingTime();
+QString Timer::showRemainingTime() const {
+    int msecRemainingTime = timer->remainingTime();
     int msec = msecRemainingTime%1000;
     int s = msecRemainingTime/1000;
     int m = s/60;
@@ -16,7 +16,30 @@ QString Timer::RemainingTime() const {
 }
 
 void Timer::pause() {
-    int remainingTime=this->remainingTime();
-    this->stop();
-    this->setInterval(remainingTime);
+    int remainingTime=timer->remainingTime();
+    timer->stop();
+    timer->setInterval(remainingTime);
+}
+
+void Timer::setTimer(QTime t) {
+    timer->setInterval((-1) * t.msecsTo(QTime(0, 0, 0, 0)));
+}
+
+Timer::~Timer() {
+    delete timer;
+}
+
+Timer::Timer() : timer(new QTimer){
+}
+
+void Timer::startTimer() {
+    timer->start();
+}
+
+bool Timer::isTimerActive() {
+    return timer->isActive();
+}
+
+void Timer::stopTimer() {
+    timer->stop();
 }

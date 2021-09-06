@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     updater = new QTimer(this);
     QObject::connect(updater,SIGNAL(timeout()),this,SLOT(UpdateInfo()));
 
-    QObject::connect(timerKeeper,SIGNAL(timeout()),this,SLOT(timeIsUpWarning()));
+    //QObject::connect(timerKeeper,SIGNAL(timeout()),this,SLOT(timeIsUpWarning()));
     updater->start(1000);
 }
 
@@ -24,23 +24,23 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::UpdateInfo() {
-    ui->timeLabel->setText(QTime::currentTime().toString(QString::fromStdString(timeKeeper->getTimeFormat())));
-    ui->dateLabel->setText(QDate::currentDate().toString(QString::fromStdString(dateKeeper->getDateFormat())));
-    if(timerKeeper->isActive()){
-        ui->timerLabel->setText(timerKeeper->RemainingTime());
-    }
+    timeKeeper->setTime(QTime::currentTime());
+    ui->timeLabel->setText(timeKeeper->showTime("hh:mm:ss"));
+    dateKeeper->setDate(QDate::currentDate());
+    ui->dateLabel->setText(dateKeeper->showDate("dd.MM.yy"));
+    if (timerKeeper->isTimerActive())
+        ui->timerLabel->setText(timerKeeper->showRemainingTime());
 }
 
 void MainWindow::on_changeTimeFormat_clicked()
 {
-    timeKeeper->changeTimeFormat();
     UpdateInfo();
 }
 
 
 void MainWindow::on_changeDateFormat_clicked()
 {
-    dateKeeper->changeDateFormat();
+
     UpdateInfo();
 }
 
@@ -52,7 +52,7 @@ void MainWindow::on_setTimerButton_clicked(){
     QTime timeInput = QTime::fromString(input);
 
     if (timeInput.isValid()) {
-        timerKeeper->setInterval((-1) * timeInput.msecsTo(QTime(0, 0, 0, 0)));
+        timerKeeper->setTimer(timeInput);
         ui->timerLabel->setText(timeInput.toString());
     }
     else {
@@ -62,8 +62,8 @@ void MainWindow::on_setTimerButton_clicked(){
 }
 
 void MainWindow::on_start_stopButton_clicked(){
-    if(! timerKeeper->isActive()){
-        timerKeeper->start();
+    if(! timerKeeper->isTimerActive()){
+        timerKeeper->startTimer();
     }
     else{
         timerKeeper->pause();
@@ -71,6 +71,6 @@ void MainWindow::on_start_stopButton_clicked(){
 }
 
 void MainWindow::timeIsUpWarning() {
-    timerKeeper->stop();
+    timerKeeper->stopTimer();
     ui->timerLabel->setText("Time's up!");
 }
