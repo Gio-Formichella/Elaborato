@@ -4,20 +4,17 @@
 
 #include "Date.h"
 
-Date::Date() {
-    dateFormat.emplace_back("dd.MM.yyyy");
-    dateFormat.emplace_back("dd.MM.yy");
-    dateFormat.emplace_back("dddd MMMM d");
-
-    dateFormatIterator=dateFormat.begin();
+Date::Date() : date(new QDate) {
 }
 
-std::string Date::getDateFormat() const {
-    return *dateFormatIterator;
+Date::~Date() {
+    delete date;
 }
 
-void Date::changeDateFormat() {
-    dateFormatIterator++;
-    if(dateFormatIterator==dateFormat.end())
-        dateFormatIterator=dateFormat.begin();
+void Date::setDate(QDate d) {
+    *date = d;
+}
+
+QString Date::showDate(QString format) {
+    return date->toString(format);
 }

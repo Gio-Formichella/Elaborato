@@ -4,20 +4,17 @@
 
 #include "Time.h"
 
-Time::Time() {
-    timeFormat.emplace_back("hh:mm:ss");
-    timeFormat.emplace_back("hh:mm");
-    timeFormat.emplace_back("H:m:s a");
-
-    timeFormatIterator=timeFormat.begin();
+Time::Time() :time(new QTime){
 }
 
-void Time::changeTimeFormat() {
-    timeFormatIterator++;
-    if(timeFormatIterator == timeFormat.end())
-        timeFormatIterator=timeFormat.begin();
+QString Time::showTime(QString format) {
+    return time->toString(format);
 }
 
-std::string Time::getTimeFormat() const {
-    return *timeFormatIterator;
+Time::~Time() {
+    delete time;
+}
+
+void Time::setTime(QTime t) {
+    *time = t;
 }

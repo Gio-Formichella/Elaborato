@@ -9,16 +9,15 @@
 #include <vector>
 #include <string>
 
-class Date : public QDate {
+class Date {
 public:
     Date();
-    ~Date() = default;
+    ~Date();
 
-    std::string getDateFormat() const;
-    void changeDateFormat();
+    void setDate(QDate d);
+    QString showDate(QString format);
 private:
-    std::vector<std::string> dateFormat;
-    std::vector<std::string>::const_iterator dateFormatIterator;
+    QDate* date;
 };
 
 

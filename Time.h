@@ -9,16 +9,15 @@
 #include <string>
 #include <vector>
 
-class Time : public QTime {
+class Time {
 public:
     Time();
-    ~Time() = default;
+    ~Time();
 
-    std::string getTimeFormat() const;
-    void changeTimeFormat();
+    void setTime(QTime t);
+    QString showTime(QString format);
 private:
-    std::vector<std::string> timeFormat;
-    std::vector<std::string>::const_iterator timeFormatIterator;
+    QTime* time;
 };
 
 
