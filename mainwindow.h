@@ -27,10 +27,6 @@ public:
 private slots:
     void UpdateInfo();
 
-    void on_changeTimeFormat_clicked();
-
-    void on_changeDateFormat_clicked();
-
     void on_setTimerButton_clicked();
 
     void on_start_stopButton_clicked();

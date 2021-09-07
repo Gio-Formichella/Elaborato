@@ -22,7 +22,7 @@ public:
     bool isTimerActive();
     void stopTimer();
 
-private:
+    //necessario accedere al timeout() SIGNAL
     QTimer* timer;
 };
 

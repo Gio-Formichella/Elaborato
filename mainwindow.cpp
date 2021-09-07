@@ -32,19 +32,6 @@ void MainWindow::UpdateInfo() {
         ui->timerLabel->setText(timerKeeper->showRemainingTime());
 }
 
-void MainWindow::on_changeTimeFormat_clicked()
-{
-    UpdateInfo();
-}
-
-
-void MainWindow::on_changeDateFormat_clicked()
-{
-
-    UpdateInfo();
-}
-
-
 void MainWindow::on_setTimerButton_clicked(){
     ui->timerLabel->clear();
 
@@ -64,6 +51,7 @@ void MainWindow::on_setTimerButton_clicked(){
 void MainWindow::on_start_stopButton_clicked(){
     if(! timerKeeper->isTimerActive()){
         timerKeeper->startTimer();
+        QObject::connect(timerKeeper->timer,SIGNAL(timeout()),this,SLOT(timeIsUpWarning()));
     }
     else{
         timerKeeper->pause();
