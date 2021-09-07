@@ -19,6 +19,6 @@ void Date::setDate(QDate d) {
     }
 }
 
-QString Date::showDate(QString format) {
+QString Date::showDate(QString& format) {
     return date->toString(format);
 }

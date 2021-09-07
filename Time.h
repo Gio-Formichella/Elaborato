@@ -17,7 +17,7 @@ public:
     ~Time();
 
     void setTime(QTime t);
-    QString showTime(QString format);
+    QString showTime(QString& format);
 private:
     QTime* time;
 };

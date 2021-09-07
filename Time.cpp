@@ -7,7 +7,7 @@
 Time::Time() :time(new QTime){
 }
 
-QString Time::showTime(QString format) {
+QString Time::showTime(QString& format) {
     return time->toString(format);
 }
 

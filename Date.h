@@ -16,7 +16,7 @@ public:
     ~Date();
 
     void setDate(QDate d);
-    QString showDate(QString format);
+    QString showDate(QString& format);
 private:
     QDate* date;
 };
