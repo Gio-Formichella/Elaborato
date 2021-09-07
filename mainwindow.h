@@ -25,7 +25,7 @@ public:
     ~MainWindow() override;
 
 private slots:
-    void UpdateInfo();
+    void updateInfo();
 
     void on_setTimerButton_clicked();
 
@@ -51,5 +51,8 @@ private:
     std::unique_ptr<Time> timeKeeper;
     std::unique_ptr<Date> dateKeeper;
     Timer *timerKeeper;
+
+    QString dateFormat;
+    QString timeFormat;
 };
 #endif // MAINWINDOW_H

@@ -6,12 +6,14 @@
 #include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-        : QMainWindow(parent), ui(new Ui::MainWindow),timeKeeper(new Time),dateKeeper(new Date),timerKeeper(new Timer) {
+        : QMainWindow(parent), ui(new Ui::MainWindow),timeKeeper(new Time),dateKeeper(new Date),timerKeeper(new Timer),
+        timeFormat("hh:mm:ss"), dateFormat("dd.MM.yyyy") {
+
     ui->setupUi(this);
 
     //updating time/date info every second
     updater = new QTimer(this);
-    QObject::connect(updater,SIGNAL(timeout()),this,SLOT(UpdateInfo()));
+    QObject::connect(updater,SIGNAL(timeout()),this,SLOT(updateInfo()));
 
     //QObject::connect(timerKeeper,SIGNAL(timeout()),this,SLOT(timeIsUpWarning()));
     updater->start(1000);
@@ -23,11 +25,11 @@ MainWindow::~MainWindow() {
     delete timerKeeper;
 }
 
-void MainWindow::UpdateInfo() {
+void MainWindow::updateInfo() {
     timeKeeper->setTime(QTime::currentTime());
-    ui->timeLabel->setText(timeKeeper->showTime("hh:mm:ss"));
+    ui->timeLabel->setText(timeKeeper->showTime(timeFormat));
     dateKeeper->setDate(QDate::currentDate());
-    ui->dateLabel->setText(dateKeeper->showDate("dd.MM.yy"));
+    ui->dateLabel->setText(dateKeeper->showDate(dateFormat));
     if (timerKeeper->isTimerActive())
         ui->timerLabel->setText(timerKeeper->showRemainingTime());
 }
@@ -63,38 +65,41 @@ void MainWindow::timeIsUpWarning() {
     ui->timerLabel->setText("Time's up!");
 }
 
-void MainWindow::on_dateFormat1Button_clicked()
-{
-
+void MainWindow::on_dateFormat1Button_clicked(){
+    dateFormat = "dd.MM.yy";
+    updateInfo();
 }
 
 
-void MainWindow::on_dateFormat2Button_clicked()
-{
-
+void MainWindow::on_dateFormat2Button_clicked(){
+    dateFormat = "dddd MMM d";
+    updateInfo();
 }
 
 
-void MainWindow::on_dateFormat3Button_clicked()
-{
-
+void MainWindow::on_dateFormat3Button_clicked(){
+    dateFormat = "dd.MM.yyyy";
+    updateInfo();
 }
 
 
 void MainWindow::on_timeFormat1Button_clicked()
 {
-
+    timeFormat = "hh:mm";
+    updateInfo();
 }
 
 
 void MainWindow::on_timeFormat2Button_clicked()
 {
-
+    timeFormat = "H:m:s a";
+    updateInfo();
 }
 
 
 void MainWindow::on_timeFormat3Button_clicked()
 {
-
+    timeFormat = "hh:mm:ss";
+    updateInfo();
 }
 
