@@ -7,7 +7,6 @@
 
 #include <QTimer>
 #include <QTime>
-#include <QObject>
 
 class Timer{
 public:

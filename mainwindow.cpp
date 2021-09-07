@@ -62,3 +62,39 @@ void MainWindow::timeIsUpWarning() {
     timerKeeper->stopTimer();
     ui->timerLabel->setText("Time's up!");
 }
+
+void MainWindow::on_dateFormat1Button_clicked()
+{
+
+}
+
+
+void MainWindow::on_dateFormat2Button_clicked()
+{
+
+}
+
+
+void MainWindow::on_dateFormat3Button_clicked()
+{
+
+}
+
+
+void MainWindow::on_timeFormat1Button_clicked()
+{
+
+}
+
+
+void MainWindow::on_timeFormat2Button_clicked()
+{
+
+}
+
+
+void MainWindow::on_timeFormat3Button_clicked()
+{
+
+}
+

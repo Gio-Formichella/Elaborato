@@ -33,6 +33,18 @@ private slots:
 
     void timeIsUpWarning();
 
+    void on_dateFormat1Button_clicked();
+
+    void on_dateFormat2Button_clicked();
+
+    void on_dateFormat3Button_clicked();
+
+    void on_timeFormat1Button_clicked();
+
+    void on_timeFormat2Button_clicked();
+
+    void on_timeFormat3Button_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *updater;
