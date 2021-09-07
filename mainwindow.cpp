@@ -26,9 +26,17 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::updateInfo() {
-    timeKeeper->setTime(QTime::currentTime());
+    try{
+        timeKeeper->setTime(QTime::currentTime());
+    }catch(std::invalid_argument& e){
+        std::cerr << e.what() <<std::endl;
+    }
     ui->timeLabel->setText(timeKeeper->showTime(timeFormat));
-    dateKeeper->setDate(QDate::currentDate());
+    try{
+        dateKeeper->setDate(QDate::currentDate());
+    }catch (std::invalid_argument& e){
+        std::cerr << e.what() << std::endl;
+    }
     ui->dateLabel->setText(dateKeeper->showDate(dateFormat));
     if (timerKeeper->isTimerActive())
         ui->timerLabel->setText(timerKeeper->showRemainingTime());

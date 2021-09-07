@@ -8,6 +8,7 @@
 #include <QDate>
 #include <vector>
 #include <string>
+#include <exception>
 
 class Date {
 public:

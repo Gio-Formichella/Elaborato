@@ -16,5 +16,9 @@ Time::~Time() {
 }
 
 void Time::setTime(QTime t) {
-    *time = t;
+    if (t.isValid()){
+        *time = t;
+    }else {
+        throw std::invalid_argument("invalid system clock time");
+    }
 }

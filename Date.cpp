@@ -12,7 +12,11 @@ Date::~Date() {
 }
 
 void Date::setDate(QDate d) {
-    *date = d;
+    if(d.isValid()){
+        *date = d;
+    }else{
+        throw std::invalid_argument("invalid system clock date");
+    }
 }
 
 QString Date::showDate(QString format) {

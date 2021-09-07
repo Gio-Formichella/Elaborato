@@ -8,6 +8,8 @@
 #include <QTime>
 #include <string>
 #include <vector>
+#include <exception>
+#include <iostream>
 
 class Time {
 public:
