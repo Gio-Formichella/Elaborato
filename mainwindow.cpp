@@ -6,8 +6,7 @@
 #include "./ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-        : QMainWindow(parent), ui(new Ui::MainWindow),timeKeeper(new Time),dateKeeper(new Date),timerKeeper(new Timer),
-        timeFormat("hh:mm:ss"), dateFormat("dd.MM.yyyy") {
+        : QMainWindow(parent), ui(new Ui::MainWindow),timeKeeper(new Time),dateKeeper(new Date),timerKeeper(new Timer){
 
     ui->setupUi(this);
 
@@ -29,12 +28,12 @@ void MainWindow::updateInfo() {
     currentQTimeToTime(h,m,s);
     timeKeeper->setTime(h,m,s);
     ui->timeLabel->setText(timeKeeper->showTime());
-    try{
-        dateKeeper->setDate(QDate::currentDate());
-    }catch (std::invalid_argument& e){
-        std::cerr << e.what() << std::endl;
-    }
-    ui->dateLabel->setText(dateKeeper->showDate(dateFormat));
+
+    int d,mon,y;
+    currentQDateToDate(d,mon,y);
+    dateKeeper->setDate(d,mon,y);
+    ui->dateLabel->setText(dateKeeper->showDate());
+
     if (timerKeeper->isTimerActive())
         ui->timerLabel->setText(timerKeeper->showRemainingTime());
 }
@@ -71,19 +70,19 @@ void MainWindow::timeIsUpWarning() {
 }
 
 void MainWindow::on_dateFormat1Button_clicked(){
-    dateFormat = "dd.MM.yy";
+    dateKeeper->changeFormat(DateFormat::format1);
     updateInfo();
 }
 
 
 void MainWindow::on_dateFormat2Button_clicked(){
-    dateFormat = "dddd MMM d";
+    dateKeeper->changeFormat(DateFormat::format2);
     updateInfo();
 }
 
 
 void MainWindow::on_dateFormat3Button_clicked(){
-    dateFormat = "dd.MM.yyyy";
+    dateKeeper->changeFormat(DateFormat::format3);
     updateInfo();
 }
 
@@ -118,3 +117,9 @@ void MainWindow::currentQTimeToTime(int &h, int &m, int &s) const {
     m=m%60;
 }
 
+void MainWindow::currentQDateToDate(int &d, int &m, int &y) const {
+    QDate currentDate = QDate::currentDate();
+    d=currentDate.day();
+    m=currentDate.month();
+    y=currentDate.year();
+}

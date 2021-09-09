@@ -25,6 +25,7 @@ public:
     ~MainWindow() override;
 
     void currentQTimeToTime(int& h, int &m, int&s) const;
+    void currentQDateToDate(int& d,int& m,int& y) const;
 
 private slots:
     void updateInfo();
@@ -53,8 +54,5 @@ private:
     std::unique_ptr<Time> timeKeeper;
     std::unique_ptr<Date> dateKeeper;
     Timer *timerKeeper;
-
-    QString dateFormat;
-    QString timeFormat;
 };
 #endif // MAINWINDOW_H
