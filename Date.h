@@ -10,15 +10,24 @@
 #include <string>
 #include <exception>
 
+enum class DateFormat{
+    format1,
+    format2,
+    format3
+};
+
 class Date {
 public:
     Date();
     ~Date();
 
-    void setDate(QDate d);
-    QString showDate(QString& format);
+    void setDate(int day, int month, int year);
+    QString showDate() const;
+
+    void changeFormat(DateFormat f);
 private:
     QDate* date;
+    DateFormat format;
 };
 
 
