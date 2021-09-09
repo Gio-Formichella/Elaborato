@@ -7,32 +7,27 @@
 
 TEST(TimeTest,setTime) {
     Time t;
-    QString format = "hh:mm:ss";
-
-    ASSERT_NO_THROW(t.setTime(QTime(0,0,10)));
-    ASSERT_EQ(t.showTime(format),"00:00:10");
-
-    ASSERT_NO_THROW(t.setTime(QTime(10,0)));
-    ASSERT_EQ(t.showTime(format),"10:00:00");
-
-    ASSERT_NO_THROW(t.setTime(QTime(0,3)));
-    ASSERT_EQ(t.showTime(format),"00:03:00");
-
-    ASSERT_NO_THROW(t.setTime(QTime(0,0,0,100)));
-
-    ASSERT_THROW(t.setTime(QTime(0,0,66)),std::invalid_argument);
-    ASSERT_THROW(t.setTime(QTime(0,63,50)),std::invalid_argument);
-    ASSERT_THROW(t.setTime(QTime(25,22,22)),std::invalid_argument);
+    ASSERT_NO_THROW(t.setTime(10,24,20));
+    t.changeFormat(TimeFormat::format1);
+    ASSERT_EQ(t.showTime(),"10:24:20");
 }
 
 TEST(TimeTest, showTimeTest){
     Time t;
-    t.setTime(QTime(17,48,22));
-    QString format1 = "hh:mm:ss";
-    QString format2 = "hh:mm";
-    QString format3 = "H:m:s a";
+    t.setTime(17,48,22);
 
-    ASSERT_EQ(t.showTime(format1),"17:48:22");
-    ASSERT_EQ(t.showTime(format2),"17:48");
-    ASSERT_EQ(t.showTime(format3),"17:48:22 pm");
+    t.changeFormat(TimeFormat::format1);
+    ASSERT_EQ(t.showTime(),"17:48:22");
+    t.changeFormat(TimeFormat::format2);
+    ASSERT_EQ(t.showTime(),"17:48");
+    t.changeFormat(TimeFormat::format3);
+    ASSERT_EQ(t.showTime(),"17:48:22 pm");
+}
+
+TEST(TimeTest,changeTimeFormattest){
+    Time t1,t2;
+    t1.setTime(14,14,14);
+    t2.setTime(14,14,14);
+    t2.changeFormat(TimeFormat::format2);
+    ASSERT_FALSE(t1.showTime()==t2.showTime());
 }

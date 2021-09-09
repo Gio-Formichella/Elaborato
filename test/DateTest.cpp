@@ -25,7 +25,9 @@ TEST(DateTest, showDateTest){
 
 TEST(DateTest, changeDateFormatTest){
     Date d1;
+    d1.setDate(9,9,2021);
     Date d2;
-    d2.changeFormat(DateFormat::format2);
+    d2.setDate(9,9,2021);
+    d2.changeFormat(DateFormat::format1);
     ASSERT_FALSE(d1.showDate()==d2.showDate());
 }
