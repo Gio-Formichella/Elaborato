@@ -24,6 +24,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
+    void currentQTimeToTime(int& h, int &m, int&s) const;
+
 private slots:
     void updateInfo();
 

@@ -25,12 +25,10 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::updateInfo() {
-    try{
-        timeKeeper->setTime(QTime::currentTime());
-    }catch(std::invalid_argument& e){
-        std::cerr << e.what() <<std::endl;
-    }
-    ui->timeLabel->setText(timeKeeper->showTime(timeFormat));
+    int h,m,s;
+    currentQTimeToTime(h,m,s);
+    timeKeeper->setTime(h,m,s);
+    ui->timeLabel->setText(timeKeeper->showTime());
     try{
         dateKeeper->setDate(QDate::currentDate());
     }catch (std::invalid_argument& e){
@@ -92,21 +90,31 @@ void MainWindow::on_dateFormat3Button_clicked(){
 
 void MainWindow::on_timeFormat1Button_clicked()
 {
-    timeFormat = "hh:mm";
+    timeKeeper->changeFormat(TimeFormat::format1);
     updateInfo();
 }
 
 
 void MainWindow::on_timeFormat2Button_clicked()
 {
-    timeFormat = "H:m:s a";
+    timeKeeper->changeFormat(TimeFormat::format2);
     updateInfo();
 }
 
 
 void MainWindow::on_timeFormat3Button_clicked()
 {
-    timeFormat = "hh:mm:ss";
+    timeKeeper->changeFormat(TimeFormat::format3);
     updateInfo();
+}
+
+void MainWindow::currentQTimeToTime(int &h, int &m, int &s) const {
+    QTime q = QTime::currentTime();
+    int msec = q.msecsSinceStartOfDay();
+    s = msec/1000;
+    m = s/60;
+    h = m/60;
+    s=s%60;
+    m=m%60;
 }
 

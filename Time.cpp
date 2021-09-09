@@ -4,7 +4,7 @@
 
 #include "Time.h"
 
-Time::Time() :time(new QTime),format(TimeFormat::format1){
+Time::Time() :time(new QTime),format(TimeFormat::format3){
 }
 
 Time::~Time() {
@@ -12,7 +12,8 @@ Time::~Time() {
 }
 
 void Time::setTime(int h, int m, int s) {
-    time = new QTime(h,m,s);
+    QTime t(h,m,s);
+    *time = t;
 }
 
 QString Time::showTime() const {
@@ -25,12 +26,12 @@ QString Time::showTime() const {
             f = "hh:mm";
             break;
         case TimeFormat::format3:
-            f= "H:m;s a";
+            f= "H:m:s a";
             break;
     }
     return time->toString(f);
 }
 
-void Time::changeFormat(TimeFormat& f) {
+void Time::changeFormat(TimeFormat f) {
     format=f;
 }

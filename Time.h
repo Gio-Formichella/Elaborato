@@ -25,7 +25,7 @@ public:
     void setTime(int h, int m, int s);
     QString showTime() const;
 
-    void changeFormat(TimeFormat& f);
+    void changeFormat(TimeFormat f);
 private:
     QTime* time;
     TimeFormat format;
