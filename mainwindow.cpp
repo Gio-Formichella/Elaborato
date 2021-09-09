@@ -15,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     updater = new QTimer(this);
     QObject::connect(updater,SIGNAL(timeout()),this,SLOT(updateInfo()));
 
-    //QObject::connect(timerKeeper,SIGNAL(timeout()),this,SLOT(timeIsUpWarning()));
     updater->start(1000);
 }
 
