@@ -7,26 +7,25 @@
 
 TEST(DateTest, setDateTest){
     Date d;
-    QString format = "dd.MM.yy";
+    ASSERT_NO_THROW(d.setDate(9,9,2021));
 
-    ASSERT_NO_THROW(d.setDate(QDate(2021,9,7)));
-    ASSERT_EQ(d.showDate(format),"07.09.21");
-
-    ASSERT_NO_THROW(d.setDate(QDate(4,11,27)));
-    ASSERT_EQ(d.showDate(format),"27.11.04");
-
-    ASSERT_THROW(d.setDate(QDate(2021,13,12)),std::invalid_argument);
-    ASSERT_THROW(d.setDate(QDate(2021,2,30)),std::invalid_argument);
+    ASSERT_EQ(d.showDate(),"09.09.2021");
 }
 
 TEST(DateTest, showDateTest){
     Date d;
-    QString format1 = "dd.MM.yy";
-    QString format2 = "dddd MMM d";
-    QString format3 = "dd.MM.yyyy";
-    d.setDate(QDate(2021,9,7));
+    d.setDate(7,9,2021);
 
-    ASSERT_EQ(d.showDate(format1),"07.09.21");
-    ASSERT_EQ(d.showDate(format2),"Tuesday Sep 7");
-    ASSERT_EQ(d.showDate(format3),"07.09.2021");
+    ASSERT_EQ(d.showDate(),"07.09.2021");
+    d.changeFormat(DateFormat::format2);
+    ASSERT_EQ(d.showDate(),"Tuesday Sep 7");
+    d.changeFormat(DateFormat::format1);
+    ASSERT_EQ(d.showDate(),"07.09.21");
+}
+
+TEST(DateTest, changeDateFormatTest){
+    Date d1;
+    Date d2;
+    d2.changeFormat(DateFormat::format2);
+    ASSERT_FALSE(d1.showDate()==d2.showDate());
 }
