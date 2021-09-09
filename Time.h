@@ -11,15 +11,24 @@
 #include <exception>
 #include <iostream>
 
+enum class TimeFormat {
+    format1,
+    format2,
+    format3,
+};
+
 class Time {
 public:
     Time();
     ~Time();
 
-    void setTime(QTime t);
-    QString showTime(QString& format);
+    void setTime(int h, int m, int s);
+    QString showTime() const;
+
+    void changeFormat(TimeFormat& f);
 private:
     QTime* time;
+    TimeFormat format;
 };
 
 

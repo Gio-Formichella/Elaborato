@@ -4,21 +4,33 @@
 
 #include "Time.h"
 
-Time::Time() :time(new QTime){
-}
-
-QString Time::showTime(QString& format) {
-    return time->toString(format);
+Time::Time() :time(new QTime),format(TimeFormat::format1){
 }
 
 Time::~Time() {
     delete time;
 }
 
-void Time::setTime(QTime t) {
-    if (t.isValid()){
-        *time = t;
-    }else {
-        throw std::invalid_argument("invalid system clock time");
+void Time::setTime(int h, int m, int s) {
+    time = new QTime(h,m,s);
+}
+
+QString Time::showTime() const {
+    QString f;
+    switch (format) {
+        case TimeFormat::format1:
+            f="hh:mm:ss";
+            break;
+        case TimeFormat::format2:
+            f = "hh:mm";
+            break;
+        case TimeFormat::format3:
+            f= "H:m;s a";
+            break;
     }
+    return time->toString(f);
+}
+
+void Time::changeFormat(TimeFormat& f) {
+    format=f;
 }
