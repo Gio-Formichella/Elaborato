@@ -10,6 +10,7 @@
 #include <vector>
 #include <exception>
 #include <iostream>
+#include <memory>
 
 enum class TimeFormat {
     format1,
@@ -20,14 +21,14 @@ enum class TimeFormat {
 class Time {
 public:
     Time();
-    ~Time();
+    ~Time() = default;
 
     void setTime(int h, int m, int s);
     QString showTime() const;
 
     void changeFormat(TimeFormat f);
 private:
-    QTime* time;
+    std::unique_ptr<QTime> time;
     TimeFormat format;
 };
 

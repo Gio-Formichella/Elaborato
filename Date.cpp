@@ -7,10 +7,6 @@
 Date::Date() : date(new QDate), format(DateFormat::format3) {
 }
 
-Date::~Date() {
-    delete date;
-}
-
 void Date::setDate(int day, int month, int year) {
     QDate d(year,month,day);
     *date = d;

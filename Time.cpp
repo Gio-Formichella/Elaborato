@@ -7,10 +7,6 @@
 Time::Time() :time(new QTime),format(TimeFormat::format3){
 }
 
-Time::~Time() {
-    delete time;
-}
-
 void Time::setTime(int h, int m, int s) {
     QTime t(h,m,s);
     *time = t;

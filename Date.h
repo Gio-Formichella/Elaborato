@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <exception>
+#include <memory>
 
 enum class DateFormat{
     format1,
@@ -19,14 +20,14 @@ enum class DateFormat{
 class Date {
 public:
     Date();
-    ~Date();
+    ~Date() = default;
 
     void setDate(int day, int month, int year);
     QString showDate() const;
 
     void changeFormat(DateFormat f);
 private:
-    QDate* date;
+    std::unique_ptr<QDate> date;
     DateFormat format;
 };
 
